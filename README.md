@@ -40,23 +40,34 @@ Undergraduate student at CQUPT, majoring in Big Data Management & Application. P
 
 ## 🏛️ Featured Project
 
-### 学生会线上交流平台
+### 学生会线上交流平台 `v3.3`
 
-为重庆邮电大学学生会（12 部门）构建的内部办公与协作平台。已上线部署。
+为重庆邮电大学学生会（12 部门）构建的内部办公与协作平台，已稳定运行。
 
-A full-stack internal platform for CQUPT Student Union (12 departments).
+A full-stack internal platform for CQUPT Student Union (12 departments), in production.
 
-**功能亮点 / Highlights:**
+**核心功能 / Core Features:**
 
-- ✅ 任务看板 — 拖拽式看板 + 里程碑 + 模板 + 审核流
-- 📢 部门公告 — 已读确认 + 关联任务 + 一键转任务
-- 🎫 活动抢票 — 限时限量 + 自动反馈 + 我的票券
-- 💬 部门论坛 — Markdown 发帖 + 分类浏览 + 知识库
-- 🔔 实时通知 — WebSocket 推送 + 5 类自动触发
-- 👥 四级角色权限 — 志愿者→负责人→主席团→主席/教师
-- 🔍 全局搜索 — Ctrl+K 唤起，4 表并行，300ms 防抖
+| 模块 | 亮点 |
+|------|------|
+| ✅ 任务管理 | 看板拖拽 + 里程碑 + 模板 + 审核流 + 移交 |
+| 📢 部门公告 | 已读确认 + 关联任务 + 一键转任务 |
+| 🎫 活动抢票 | 限时限量 + PostgreSQL RPC 原子操作 + FOR UPDATE 行锁防超卖 |
+| 💬 部门论坛 | Markdown 发帖 + 分类 + 知识库模板 |
+| 🔔 实时通知 | Supabase Realtime + 8 类自动触发 |
+| 📊 数据分析 | 使用事件埋点 + 管理员看板 + 页面排名 + 错误日志 |
+| 👥 权限体系 | 6 种角色 + 12 部门 + 邀请码管理（有效期/次数/撤销） |
+| 📱 PWA | 离线访问 + 版本更新推送 + 添加到主屏幕 |
+| 📎 文件上传 | 拖拽上传 + MIME 白名单 + Storage 所有者保护 |
+| 🔍 全局搜索 | Ctrl+K + 4 表并行 + 300ms 防抖 |
 
-`React 19` `TypeScript 6` `Vite 8` `Ant Design 6` `Supabase` `@dnd-kit` `CSS Modules` `GitHub Pages`
+**近期迭代 / Recent Iterations:**
+- v3.3 — 抢票 RPC 原子化、邀请码增强、密码强度、ADR 架构文档、SW 优化
+- v3.2 — 数据埋点与分析看板（6 类事件 + fire-and-forget）
+- v3.1 — 密钥安全、随机默认密码、任务搜索筛选
+- v3.0 — PWA 全栈支持（离线 / 安装 / 版本公告）
+
+`React 19` `TypeScript 6` `Vite 8` `Ant Design 6` `Supabase` `PostgreSQL` `PWA` `GitHub Pages`
 
 🔗 [在线访问](https://yhllxy.github.io/student-union-platform/) · 📂 [源代码](https://github.com/YHLLXY/student-union-platform)
 

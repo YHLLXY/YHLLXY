@@ -76,31 +76,33 @@ A full-stack internal platform for CQUPT Student Union (12 departments), shipped
 
 🔗 [在线访问](https://yhllxy.github.io/student-union-platform/) · 📂 [源代码](https://github.com/YHLLXY/student-union-platform)
 
-### 个人工作台 Personal Workbench `v1.23`
+### 个人工作台 Personal Workbench `v1.30`
 
-单用户效率工作台 PWA：待办、学习、健康、复盘、资料、提醒、项目看板，数据完全自有（本地 IndexedDB 或自托管 Supabase），不含任何遥测。
+单用户效率工作台 PWA：待办、学习、健康、复盘、资料、提醒、项目看板，外加一条 **AI 日报**流水线（25 个热榜源 → LLM 逐条摘要 → 事件聚簇 → 编排成刊）。数据完全自有（本地 IndexedDB 或自托管 Supabase），不含任何遥测。
 
-A single-user productivity workbench PWA — tasks, study, health, reviews, notes, reminders and projects. Data fully owned: local IndexedDB or self-hosted Supabase, zero telemetry.
+A single-user productivity workbench PWA — tasks, study, health, reviews, notes, reminders and projects, plus an **AI daily-digest** pipeline (25 sources → per-item LLM summaries → event clustering → composed briefing). Data fully owned: local IndexedDB or self-hosted Supabase, zero telemetry.
 
 **核心功能 / Core Features:**
 
 | 模块 | 亮点 |
 |------|------|
 | 🧩 业务模块 | 13 个模块：总览 / 待办 / 学习 / 番茄钟 / 成长 / 健康 / 复盘 / 热点 / 速记 / 论文 / 提醒 / 项目 / 我的 |
+| 📰 AI 日报 | 热榜落库 → 逐条 AI 摘要 → PostgreSQL + `pgvector` 事件聚簇 → 编排成刊；状态机 + 原子领取 + 时间预算，一键复制成 Markdown |
 | ⌨️ 全局能力 | ⌘K 命令面板 + 快速捕获 + 全局快捷键 + 暗色主题 + 程序化日月光源启动动画 |
 | 🔄 双仓储同构 | 本地 IndexedDB ↔ 云端 Supabase 行为严格一致，契约测试防漂移 |
 | 📴 离线优先 | Workbox 预缓存 + API 运行时缓存弱网秒开 + 离线导航回退 |
-| 🔔 提醒推送 | 应用内横幅 + Web Push 系统通知（VAPID），通知失败静默降级为应用内提醒 |
-| 🚦 体积红线 | JS 总量 ≤ 1120KB 机器门禁；recharts → 手绘 SVG 为移动端首屏 -312KB |
+| 🔔 多通道提醒 | 应用内横幅 + Web Push（VAPID）+ Server酱 + Telegram，任一失败静默降级 |
+| 🤖 全自动 | GitHub Actions 定时编排：每日 06:00 生成日报，每小时扫描到期提醒 |
+| 🚦 体积红线 | 首屏 JS ≤ 790KB、总量 ≤ 1150KB 机器门禁；recharts → 手绘 SVG 为移动端首屏 -312KB |
 
 **近期迭代 / Recent Iterations:**
-- v1.23.2 — 修复通知授权后全站崩溃（前台通知改走 SW 通道 + 内层错误边界按路由重置 + 真机语义回归测试）
-- v1.23.1 — 壳层文档级滚动根治、空态统一 CTA、云端 deleteFolder 子树对齐、发版门禁补 lint 基线
-- v1.23.0 — 「我的」个人中心五段式改版（身份卡 / 周趋势 / 累计统计 / 分组行 / 关于）
-- v1.22 — 启动动画升级：Canvas 双层氛围层 + 程序化日月光源 + 镜头缓动
-- v1.19 — recharts → 手绘 SVG 周趋势图，移动端首屏 -312KB
+- v1.30 — 上线自检新增 Telegram 通道；定时提醒接入 GitHub Actions（每小时扫描，离线兜底）
+- v1.29 — 日报加「复制」导出 Markdown；科技类加权配额（4 → 12 条）；把已生成的摘要喂进编排提示词（事件数 10 → 18）
+- v1.28 — **AI 日报上线实测七连修**：数据库 CHECK 约束漏状态值、错误信息被吞、思考 token 吃满输出额度导致 JSON 截断、鉴权客户端传空 uuid、服务端猜错归属账号、时间预算被固定开销挤占
+- v1.26 — 首页网格空洞、番茄钟主题持久化、身体记录去重、日出日落重做
+- v1.23.2 — 修复通知授权后全站崩溃（前台通知改走 SW 通道 + 真机语义回归测试）
 
-`React 19` `TypeScript 6` `Vite 8` `Tailwind CSS 4` `TanStack Query v5` `Supabase` `Workbox` `Vercel`
+`React 19` `TypeScript 6` `Vite 8` `Tailwind CSS 4` `TanStack Query v5` `Supabase` `pgvector` `Workbox` `Vercel` `GitHub Actions`
 
 📂 [源代码](https://github.com/YHLLXY/-personal-workbench)
 
